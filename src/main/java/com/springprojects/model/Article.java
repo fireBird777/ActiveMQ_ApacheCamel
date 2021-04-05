@@ -13,8 +13,6 @@ import java.io.Serializable;
 @Component
 @Entity
 @Getter
-@Setter
-@ToString
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor

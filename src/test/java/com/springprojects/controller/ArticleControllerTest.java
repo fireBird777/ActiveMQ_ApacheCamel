@@ -71,7 +71,7 @@ class ArticleControllerTest {
 
         ObjectMapper om = new ObjectMapper();
 
-        doNothing().when(articleService).save(article1);
+        when(articleService.save(article1)).thenReturn(article1);
 
         MvcResult result = mockMvc.perform(post("/articles")
                  .content(om.writeValueAsString(article1))

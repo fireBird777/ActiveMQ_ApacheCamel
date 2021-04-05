@@ -105,7 +105,7 @@ class ArticleServiceTest {
 
         when(articleRepository.save(article1)).thenReturn(article1);
 
-        assertEquals(article1,articleRepository.save(article1));
+        assertEquals(article1,articleService.save(article1));
 
         verify(articleRepository,times(1)).save(article1);
     }

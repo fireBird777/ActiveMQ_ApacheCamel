@@ -3,6 +3,7 @@ package com.springprojects.controller;
 import com.springprojects.model.ArticleDTO;
 import com.springprojects.service.PublishService;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.everit.json.schema.Schema;
 import org.everit.json.schema.ValidationException;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -70,7 +71,9 @@ class PublishControllerTest {
 
         ObjectMapper om = new ObjectMapper();
         String response = null;
-        doThrow(ValidationException.class).when(publishService).publishArticle(any());
+        //ValidationException ex = new ValidationException(null,String.class,Integer.class,null);
+
+        doThrow(new ValidationException(null,String.class,Integer.class,null)).when(publishService).publishArticle(any());
         MvcResult result = mockMvc.perform(post("/publisher/articles")
                 .content(om.writeValueAsString(articleDTO))
                 .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON))
